@@ -1,0 +1,15 @@
+<!--pages/videoPage/index.wxml-->
+<view class="video-page">
+  <view class="header-title">
+    <navigator open-type="navigateBack" delta='0'>
+      <image bindtap="gobackChange" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/back.png"></image>
+      <text bindtap="gobackChange">视频讲解</text>
+    </navigator>
+  </view>
+  <video class="video-content" object-fit="fill" src="{{videoSrc}}"></video>
+  <view class="backBtn" >  
+    <navigator open-type="navigateBack" delta='0'>
+    <image src="../../images/index/backBtn.png" bindtap="gobackChange"></image>
+    </navigator>
+  </view>
+</view>

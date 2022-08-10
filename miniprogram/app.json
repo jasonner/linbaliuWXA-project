@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/msgList/index",
+    "pages/userCenter/index",
+    "pages/addDetail/index",
+    "pages/record/index",
+    "pages/login/index",
+    "pages/recordDetail/index",
+    "pages/data1/index",
+    "pages/data2/index",
+    "pages/editRecordDetail/index",
+    "pages/guildSongjianList/index",
+    "pages/guildMenu/index",
+    "pages/InspectionProcess/index",
+    "pages/collectInformation/index",
+    "pages/sampleUnqualified/index",
+    "pages/saveDraft/index",
+    "pages/recordQuery/index",
+    "pages/guildList/MedicationfollowUp/index",
+    "pages/systemSelection/index",
+    "pages/iosGuild/index",
+    "pages/iostextguild/index",
+    "pages/AndroidGuild/index",
+    "pages/AndroidTextGuild/index",
+    "pages/qAndA/index",
+    "pages/videoPage/index",
+    "pages/processOverview/index",
+    "pages/branchIndex/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3bc4c9",
+    "navigationBarTitleText": "淋巴瘤精准筛查公益平台",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "#5bcfd2",
+    "borderStyle": "white",
+    "list": [
+      {
+        "iconPath": "./images/index/icon1N.png",
+        "selectedIconPath": "./images/index/icon1Y.png",
+        "pagePath": "pages/branchIndex/index",
+        "text": "首页"
+      },
+      {
+        "iconPath": "./images/index/icon2N.png",
+        "selectedIconPath": "./images/index/icon2Y.png",
+        "pagePath": "pages/msgList/index",
+        "text": "项目进度"
+      },
+      {
+        "iconPath": "./images/index/icon4N.png",
+        "selectedIconPath": "./images/index/icon4Y.png",
+        "pagePath": "pages/guildMenu/index",
+        "text": "使用指南"
+      },
+      {
+        "iconPath": "./images/index/icon3N.png",
+        "selectedIconPath": "./images/index/icon3Y.png",
+        "pagePath": "pages/userCenter/index",
+        "text": "个人中心"
+      }
+    ],
+    "debug": true
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,23 @@
+<!--pages/systemSelection/index.wxml-->
+<view class="guildMenu-page">
+  <view class="header-title">
+    <navigator 	open-type="navigateBack" delta='0'  >
+      <image  bindtap="gobackChange" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/back.png"></image>
+      <text  bindtap="gobackChange">系统选择</text>
+    </navigator>
+  </view>
+  <view class="guide-header-box">
+    <image mode="widthFix"  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/UseGuide/top-bg.png"></image>
+  </view>
+  <view class="menu-content">
+   <view bindtap="iosChange">
+    <image mode="widthFix"  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/systemSelection/ios.png"></image>
+   </view>
+   <view bindtap="AndioChange">
+    <image mode="widthFix"  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/systemSelection/Andio.png"></image>
+   </view>
+  </view>
+</view>
+  
+
+

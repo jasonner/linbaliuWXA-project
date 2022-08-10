@@ -1,0 +1,81 @@
+/* pages/guildMenu1/index.wxss */
+.guildMenu-page{
+  width: 100%;
+  min-height: 100%;
+  overflow: scroll;
+  background: #2fc0c5;
+}
+.guide-header-box{
+  width: 100%;
+  height: auto;
+}
+.guide-header-box image{
+  width: 100%;
+  height: 100%;
+}
+.menu-content{
+  width: 702rpx;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  z-index: 100;
+  position: relative;
+  margin-top: -250rpx;
+  margin-bottom: 240rpx;
+  padding-bottom: 42rpx;
+  box-sizing: border-box;
+}
+.menu-list{
+  width: 653rpx;
+  height: 162rpx;
+  margin: 0 auto;
+  border-bottom: 1px dashed #e5e5e5;
+  display: grid;
+  grid-template-columns: 496rpx 162rpx;
+  padding-top: 5rpx;
+  box-sizing: border-box;
+}
+.menu-list:nth-last-of-type(1){
+  border: none;
+}
+.menu-list .left image{
+  width: 78rpx;
+  height: 78rpx;
+  margin-top: 43rpx;
+  float: left;
+  margin-right: 33rpx;
+}
+.menu-list .left .content-title{
+  margin-top: 40rpx;
+  font-size: 30rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: SC-Bold;
+  text-align: justifyLeft;
+  color: #333333;
+}
+.menu-list .left .content-text{
+  font-size: 26rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: justifyLeft;
+  color: #666666;
+  margin-top: 13rpx;
+}
+.menu-list .right button{
+  width: 158rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  background: #f9f9f9;
+  border-radius: 33rpx;
+  font-size: 30rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: justifyLeft;
+  color: #55cace;
+  margin-top: 50rpx;
+  padding: 0;
+}
+.menu-list  button:hover{
+  background: #2fc0c5;
+  color: #fff;
+}

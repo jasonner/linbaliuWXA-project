@@ -1,0 +1,31 @@
+<!--pages/branch/index.wxml-->
+<view class="branch-page">
+  <view class="header-box">
+    <image mode="widthFix" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/branch/header-img.png"></image>
+  </view>
+
+  <!--  -->
+  <view class="content-box" wx:if="{{organization !='3'}}">
+    <view class="list-box">
+      <view bindtap="ceo2Change">
+        <image mode="aspectFit" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/branch/list1.png?v=20220725" alt=""></image>
+      </view>
+      <view bindtap="BChange">
+        <image mode="aspectFit" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/branch/list2.png?v=20220725" alt=""></image>
+      </view>
+    </view>
+    <view class="tip">
+      请根据实际情况，正确选择送检项目
+    </view>
+  </view>
+
+  <view class="kefu">
+    <button  open-type="contact" bindcontact="handleContact">
+      <image src="../../images/index/icon-kefu.png" alt="" srcset=""></image>
+    </button>
+  </view>
+  <!-- logo -->
+  <view class="logo-box">
+    <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/logo.png"></image>
+  </view>
+</view>

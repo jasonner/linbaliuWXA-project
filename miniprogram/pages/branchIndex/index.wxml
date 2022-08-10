@@ -1,0 +1,102 @@
+<!--miniprogram/pages/index/index.wxml-->
+<view class="index-page">
+  <!-- header -->
+  <view class="header-box">
+    <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/header.png"></image>
+    <view class="title">淋巴瘤精准筛查公益信息交互平台</view>
+    <view class="project-center">
+      <text>项目中心</text>
+    </view>
+    <view class="believe-box">
+      <text wx:if="{{joinType =='B'}}">BELIEVE</text>
+      <text wx:if="{{joinType =='CE02'}}">Guidance02研究</text>
+    </view>
+    <view class="user-center-box">
+      <view class="user-introduce-list">
+        <view class="list">
+          <image src="{{userInfoList.headimg}}"></image>
+        </view>
+        <view class="list">
+          <view>
+            <text class="user-name">{{userInfoList.nickname}}</text>
+          </view>
+          <view class="time">
+            <text>{{yearDate}}</text> <text>第{{userInfoList.week}}周</text>
+          </view>
+        </view>
+        <view class="list"> 
+          <view class="number">{{totalAll}}</view>
+          <view class="week-number">本周提交数量</view>
+        </view>
+      </view>
+      <view class="reminder" wx:if="{{tipShow}}">
+        <view bindtap="lookTipChange">
+          <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/icon-tip.png"></image> 
+        </view>
+        <view class="tip-content" bindtap="lookTipChange">
+          <scroll-view>
+            <view class="ttt" style="transform: translateX(-{{distance}}px)">
+              <text style="margin-right:{{space}}px;"></text>
+              <text id="mjltest" class="tip-content-text">{{text}}</text>
+              <text style="margin-right:{{space}}px;"></text>
+              <text class="tip-content-text">{{text}}</text>
+            </view>
+          </scroll-view>
+        </view>
+        <view bindtap="tipCloseChange"> 
+          <image class="close" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/icon-close.png"></image>
+        </view>
+      </view>
+ 
+    </view>
+  </view>
+
+  <!-- 列表  -->
+  <view class="row-list-box">
+    <button class="getUserInfo" open-type="getUserInfo"  bindtap="addDetail">
+      <view class="list-content" >
+        <view class="list">
+          <image wx:if="{{joinType =='CE02' || organization=='2' ||organization=='3'}}" class="img" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/branch/icon1.png"></image>
+          <image wx:else class="img" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/branch/icon2.png"></image>
+        </view>
+        <view class="list">
+          <view>信息录入</view>
+          <view class="arrow-box"> <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/arrow.png"></image> </view>
+        </view>
+      </view>
+    </button>
+
+    <view class="list-content" bindtap="lookRecord">
+      <view class="list">
+        <image class="img"  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/icon-list2.png"></image>
+      </view>
+      <view class="list">
+        <view>查看记录</view>
+        <view class="arrow-box" style="background: #f88f90;"> <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/arrow.png"></image> </view>
+      </view>
+    </view>
+    <view class="list-content" bindtap="lookUsercenter">
+      <view class="list">
+        <image class="img" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/icon-list3.png"></image>
+      </view>
+      <view class="list">
+        <view>数据排行</view>
+        <view class="arrow-box" style="background: #66e6c1;"> <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/arrow.png"></image> </view>
+      </view>
+    </view>
+  </view>
+  <view class="kefu">
+    <button  open-type="contact" bindcontact="handleContact">
+      <image src="../../images/index/icon-kefu.png" alt="" srcset=""></image>
+    </button>
+  </view>
+  <!-- logo -->
+  <view class="logo-box">
+    <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/logo.png"></image>
+  </view>
+  <view class="backBtn" wx:if="{{organization !='3'}}">  
+    <navigator url="/pages/index/index" open-type="redirect" delta='0'>
+    <image src="../../images/index/backBtn.png" bindtap="gobackChange"></image>
+    </navigator>
+  </view>
+</view>

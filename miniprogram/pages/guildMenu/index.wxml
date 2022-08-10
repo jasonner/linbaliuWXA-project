@@ -1,0 +1,25 @@
+<!--pages/guildMenu1/index.wxml-->
+<view class="guildMenu-page">
+  <view class="guide-header-box">
+    <image mode="widthFix"  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/UseGuide/top-bg.png"></image>
+  </view>
+  <view class="menu-content">
+    <view class="menu-list" wx:for="{{menuList}}" wx:key="inndex" data-index="{{index+1}}" bindtap="lookDetail">
+      <view class="left">
+        <image src="{{item.iconSrc}}"></image>
+        <view class="content-title">{{item.title}}</view>
+        <view class="content-text">{{item.content}}</view>
+      </view>
+      <view class="right">
+        <button>{{item.btnText}}</button>
+      </view>
+    </view>
+  </view>
+  <view class="kefu">
+    <button  open-type="contact" bindcontact="handleContact">
+      <image src="../../images/index/icon-kefu.png" alt="" srcset=""></image>
+    </button>
+  </view>
+</view>
+  
+

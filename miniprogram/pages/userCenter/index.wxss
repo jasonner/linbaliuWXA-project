@@ -1,0 +1,195 @@
+/* miniprogram/pages/userCenter/index.wxss */
+.user-page{
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+.user-introduce-list .list .edit-name{
+  width: 31rpx;
+  height: 31rpx;
+  border-radius: 0px;
+  overflow: auto;
+}
+.email-box{
+  width: 100%;
+  height: auto;
+  margin-top: 100rpx;
+}
+.email-bg{
+  width: 675rpx;
+  margin: 0 auto;
+  position: relative;
+}
+.email-bg image{
+  width: 100%;
+  height: 140rpx;
+}
+.email-content{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+.email-content .left view:nth-of-type(1){
+  font-size: 36rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: SC-Bold;
+  text-align: left;
+  color: #ffffff;
+  letter-spacing: -0.72px;
+  margin-top: 15rpx;
+  margin-left: 30rpx;
+}
+.email-content .left view:nth-of-type(2){
+  font-size: 28rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: left;
+  color: #ffffff;
+  letter-spacing: -0.56px;
+  margin-left: 30rpx;
+  margin-top: 5rpx;
+}
+.email-content .right button{
+  font-size: 28rpx;
+  font-family: Adobe Heiti Std, Adobe Heiti Std-R;
+  font-weight: R;
+  text-align: center;
+  color: #fefefe;
+  letter-spacing: -0.56px;
+  width: 157rpx;
+  height: 57rpx;
+  line-height: 57rpx;
+  background: #198f8b;
+  border-radius: 29rpx;
+  padding: 0;
+  margin-top: 34rpx;
+}
+.column-box{
+  width: 100%;
+  overflow: scroll;
+}
+.canvas {
+  width: 100%;
+  height: 200px;
+}
+.ranking-select-box{
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  margin-top: 48rpx;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-bottom: 60rpx;
+}
+.ranking-select-icon{
+  width: 6rpx;
+  height: 30rpx;
+  background: #2fc0c5;
+  margin-right: 11rpx;
+  float: left;
+  margin-top: 8rpx;
+}
+.ranking-select-title{
+  font-size: 32rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: 600;
+  text-align: left;
+  color: #333333;
+  letter-spacing: -0.64px;
+}
+.ranking-select-number{
+  font-size: 32rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: SC-Bold;
+  text-align: left;
+  color: #2fc0c5;
+  letter-spacing: -0.64px;
+  margin-left: 16rpx;
+}
+.ranking-select-right-icon-rili{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 5rpx;
+}
+.ranking-select-right {
+  text-align: right;
+}
+.ranking-select-right .nian{
+  font-size: 28rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: left;
+  color: #333333;
+  letter-spacing: 0.42px;
+}
+.ranking-select-right .select-data{
+  width: 42rpx;
+  display: inline-block;
+  background: #2fc0c5;
+  border-radius: 9rpx;
+  box-shadow: 0.62px 1.9rpx 3.68rpx 0.16rpx rgba(64,163,167,0.40);
+  font-size: 10rpx;
+  font-family: Adobe Heiti Std, Adobe Heiti Std-R;
+  font-weight: R;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 0.15px;
+  margin:0 10rpx;
+  margin-bottom: 20rpx;
+}
+.arrow-down{
+  width: 23rpx;
+  height: 13rpx;
+  line-height: 3;
+}
+.pie-box{
+  width: 100%;
+  margin-top: 87rpx;
+  position: relative;
+}
+.pie-box .pie-title{
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  margin-bottom: 72rpx;
+}
+.hide-bg{
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  z-index: 1000;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.column2Canvas .canvas{
+  z-index: 999;
+}
+.logo-box{
+  width: 100%;
+  margin-bottom: 80rpx;
+}
+.logo-box image{
+  display: block;
+  width: 226rpx;
+  height: 131rpx;
+  margin: 0 auto;
+}
+.copy-box{
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  margin-top: 57rpx;
+}
+.copy-box image{
+  width: 100%;
+}
+.noDataShow{
+  width: 100%;
+  margin: 0 auto;
+}
+.noDataShow image{
+  width: 100%;
+}

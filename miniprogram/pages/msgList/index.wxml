@@ -1,0 +1,117 @@
+<!--miniprogram/pages/msgList/index.wxml-->
+<view class="msgList-page">
+    <!-- header -->
+    <view class="header-box">
+      <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/header.png"></image>
+      <view class="title">淋巴瘤精准筛查公益信息交互平台</view>
+      <view class="project-center">
+        <text>项目进度</text>
+      </view>
+      <view class="believe-box">
+        <!-- <text>BELIEVE</text> -->
+      </view>
+      <view class="user-center-box">
+        <view class="user-introduce-list">
+          <view class="list">
+            <image src="{{userInfoList.headimg}}"></image>
+          </view>
+          <view class="list">
+            <view>
+              <text class="user-name">{{userInfoList.nickname}}</text>
+            </view>
+            <view class="time">
+              <text>第{{userInfoList.week}}周</text>
+            </view>
+          </view>
+          <view class="list"> 
+            <view class="number">{{totalAll}}</view>
+            <view class="week-number">本周提交数量</view>
+          </view>
+        </view>
+        <view class="reminder" wx:if="{{tipShow}}">
+          <view bindtap="lookTipChange">
+            <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/icon-tip.png"></image> 
+          </view>
+          <view class="tip-content" bindtap="lookTipChange">
+            <scroll-view>
+              <view class="ttt" style="transform: translateX(-{{distance}}px)">
+                <text style="margin-right:{{space}}px;"></text>
+                <text id="mjltest" class="tip-content-text">{{text}}</text>
+                <text style="margin-right:{{space}}px;"></text>
+                <text class="tip-content-text">{{text}}</text>
+              </view>
+            </scroll-view>
+          </view>
+          <view bindtap="tipCloseChange"> 
+            <image class="close" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/icon-close.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- tab -->
+    <view class="tab-box">
+      <view data-index="0" class="list {{_num=='0'?'active':''}}" bindtap="tabClick">
+        <text>提交检测</text>
+      </view>
+      <view data-index="1" class="list  {{_num=='1'?'active':''}}" bindtap="tabClick">
+        <text>已完成检测</text>
+				<icon wx:if="{{hasSubmitNum && recordList.length>=1 && _num=='1'}}" class="icon-box-img" type="warn" size="18"></icon>
+      </view>
+      <!-- <view data-index="2" class="list  {{_num=='2'?'active':''}}" bindtap="tabClick">
+        <text>后续跟进</text>
+				<icon wx:if="{{hasSubmitNum && recordList.length>=1 && _num=='2'}}" class="icon-box-img" type="warn" size="18"></icon>
+      </view> -->
+    </view>
+    
+    <!-- list -->
+    <view class="list-box">
+      <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px" class="orderList {{hasProductPay?'show':'hidden'}}" bindscrolltolower="bindDownLoad" bindscroll="scroll">
+        <view class="list" wx:for="{{recordList}}" wx:key="id" wx:if="{{recordList.length>0}}">
+          <view class="msg-title {{tem.status ==2?'active':'' }}"> 
+            <icon style="margin-top: 1vh; float: left;margin-right: 5rpx;" wx:if="{{item.status ==2}}" class="icon-box-img" type="warn" size="18"></icon>
+            <image  wx:else="{{item.status !=2}}" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/msg/icon-arrow.png"></image>
+            <text wx:if="{{item.status ==2}}">样本不合格</text> 
+            <text wx:else="{{item.status !=2}}">已提交</text>
+          </view>
+          <view class="number-title">
+            送检编号 {{item.detectcode}}
+          </view>
+          <view class="list-msg-content">
+            <view class="left">
+              <view>填报人：{{item.username}}</view>
+              <view>填表日期：{{item.write}}</view>
+              <view>送检医生：{{item.doctor}}</view>
+              <view>科 室：{{item.keshi}}</view>
+              <view wx:if="{{item.IsFollow}}">状态： 已进入后续治疗</view>
+            </view>
+            <view class="right">
+              <view wx:if="{{_num  =='0' && item.detectcode}}">
+                <button bindtap="delOrder" data-index="{{item.detectcode}}">取消订单</button>
+              </view>
+              <view>
+                <button bindtap="lookDetail" data-index="{{item.id}}">点击查看</button>
+              </view>
+              <view wx:if="{{_num  =='0' && item.status ==2}}">
+                <button bindtap="reSubmitDetail" data-index="{{item.detectcode}}">再次编辑</button>
+              </view>
+              <view wx:if="{{_num  !='0'}}">
+                <button bindtap="sedEmailChange" data-formid="{{item.formid}}">数据导出</button>
+              </view>
+              <!-- <view  wx:if="{{_num  !='3'}}" class="isIsFollowShow">
+                <text wx:if="{{item.IsFollow}}">已进入后续治疗</text>
+              </view> -->
+            </view>
+          </view>
+        </view>
+      <view class="list no-data-img" wx:if="{{recordList.length<=0}}">
+        <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/node-data.png"></image>
+      </view>
+    </scroll-view>
+    </view>
+    <view class="kefu">
+      <button  open-type="contact" bindcontact="handleContact">
+        <image src="../../images/index/icon-kefu.png" alt="" srcset=""></image>
+      </button>
+    </view>
+</view>

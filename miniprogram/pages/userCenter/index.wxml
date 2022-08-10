@@ -1,0 +1,129 @@
+<!--miniprogram/pages/userCenter/index.wxml-->
+<view class="user-page">
+  <!-- header -->
+   <view class="header-box">
+    <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/header.png"></image>
+    <view class="title">淋巴瘤精准筛查公益信息交互平台</view>
+    <view class="project-center">
+      <text>个人中心</text>
+    </view>
+    <view class="believe-box">
+      <!-- <text>BELIEVE</text> -->
+    </view>
+    <view class="user-center-box">
+      <view class="user-introduce-list">
+        <view class="list">
+          <image src="{{userInfoList.headimg}}"></image>
+        </view>
+        <view class="list">
+          <view bindtap="setUserName">
+            <text class="user-name">{{userInfoList.nickname}}</text>
+            <image class="edit-name" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/user/icon-edit.png"></image>
+          </view>
+          <view class="time">
+            <text>{{yearDate}}</text> <text>第{{userInfoList.week}}周</text>
+          </view>
+        </view>
+        <view class="list"> 
+          <view class="number">{{totalAll}}</view>
+          <view class="week-number">本周提交数量</view>
+        </view>
+      </view>
+      <view class="reminder"  wx:if="{{tipShow}}">
+        <view bindtap="lookTipChange">
+          <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/icon-tip.png"></image> 
+        </view>
+        <view class="tip-content" bindtap="lookTipChange">
+          <scroll-view>
+            <view class="ttt" style="transform: translateX(-{{distance}}px)">
+              <text style="margin-right:{{space}}px;"></text>
+              <text id="mjltest" class="tip-content-text">{{text}}</text>
+              <text style="margin-right:{{space}}px;"></text>
+              <text class="tip-content-text">{{text}}</text>
+            </view>
+          </scroll-view>
+        </view>
+        <view bindtap="tipCloseChange"> 
+          <image class="close" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/icon-close.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- email-box -->
+  <view class="email-box">
+    <view class="email-bg">
+      <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/user/emailbg.png"></image>
+      <view class="email-content">
+        <view class="left">
+          <view>邮箱</view>
+          <view wx:if="{{userInfoList.email}}">{{userInfoList.email}}</view>
+        </view>
+        <view class="right">
+          <button bindtap="setEmail">设置邮箱</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 总提交数量 -->
+  <view class="ranking-select-box">
+    <view class="ranking-select-left">
+      <text class="ranking-select-icon"></text><text class="ranking-select-title">总提交数量</text><text class="ranking-select-number">{{allNumber}}</text>
+    </view>
+    <view class="ranking-select-right">
+      <picker mode="date" start="2021"  end="2022"	  fields="year" value="{{yearDate}}"  bindchange="bindDateChange">
+        <view class="picker">
+          <image class="ranking-select-right-icon-rili" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/user/icon-rili.png"></image><text class="nian">{{yearDateShow}}</text> 
+          <!-- <text class="select-data">月份选择</text> -->
+          <image class="arrow-down" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 总提交数量柱状图 -->
+  <view class="column-box">
+    <!-- <canvas  canvas-id="columnCanvas" class="canvas" bindtouchstart="touchHandler"></canvas> -->
+    <canvas wx:if="{{!columnNoDataShow}}" canvas-id="columnCanvas" class="canvas"></canvas>
+    <view class="noDataShow" wx:if="{{columnNoDataShow}}">
+      <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/node-data.png"></image>
+    </view>
+  </view>
+
+  <!-- 已完成中分型结果 -->
+  <!-- <view class="pie-box">
+    <view class="pie-title">
+      <text class="ranking-select-icon"></text><text class="ranking-select-title">已完成中分型结果</text>
+    </view>
+    <view class="pieCanvas">
+      <canvas canvas-id="pieCanvas" class="canvas" style="height:300px" bindtouchstart="touchHandler"></canvas>
+    </view>
+  </view> -->
+
+  <!-- 是否进行BTK治疗 -->
+  <!-- <view class="pie-box" >
+    <view class="pie-title">
+      <text class="ranking-select-icon"></text><text class="ranking-select-title">是否进行BTK治疗</text>
+    </view>
+    <view class="column2Canvas" wx:if="{{!noDataShow}}">
+      <canvas   canvas-id="column2Canvas" class="canvas"></canvas>
+    </view>
+    <view class="noDataShow" wx:if="{{noDataShow}}">
+      <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/node-data.png"></image>
+    </view>
+  </view> -->
+  <!-- <view class="copy-box">
+    <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/user/copy.png"></image>
+  </view> -->
+  
+  <!-- logo -->
+  <view class="logo-box">
+    <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/logo.png"></image>
+  </view>
+  <view class="kefu">
+      <button  open-type="contact" bindcontact="handleContact">
+        <image src="../../images/index/icon-kefu.png" alt="" srcset=""></image>
+      </button>
+    </view>
+</view>

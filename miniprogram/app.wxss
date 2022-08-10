@@ -1,0 +1,187 @@
+/**app.wxss**/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+button {
+  background: initial;
+}
+
+button:focus{
+  outline: 0;
+}
+
+button::after{
+  border: none;
+}
+page {
+  width: 100vw;
+  height: 100vh;
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.header-box{
+  width: 100%;
+  height: 540rpx;
+  position: relative;
+}
+.header-box image{
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 10;
+}
+.title{
+  position: absolute;
+  top: 6.5vh;
+  left: 2vw;
+  color: #fff;
+  font-size: 32rpx;
+}
+.project-center{
+  position: absolute;
+  top: 197rpx;
+  left: 30rpx;
+  color: #fff;
+  font-size: 61rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: SC-Bold;
+  text-align: left;
+  color: #ffffff;
+  text-shadow: 2rpx 2rpx #000;
+}
+.believe-box{
+  position: absolute;
+  left: 27rpx;
+  color: #fff;
+  top: 297rpx;
+}
+.believe-box text{
+  background: #6fd5d9;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  border-radius: 50rpx;
+  font-size: 22rpx;
+}
+/* user-center-box*/
+.user-center-box{
+  width: 93.6%;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 43px 0px rgba(214,214,214,0.33); 
+  margin: 0 auto;
+  position: absolute;
+  bottom: -104rpx;
+  left: 23rpx;
+  z-index: 1000;
+  padding-bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+
+/* user-introduce-list */
+.user-introduce-list{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 156rpx 284rpx 265rpx;
+  margin-top: 40rpx;
+}
+.user-introduce-list .list image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  margin-left: 20rpx;
+}
+
+.user-introduce-list .list .user-name{
+  font-size: 34rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: SC-Bold;
+  text-align: left;
+  color: #333333;
+  margin-top: 46rpx;
+}
+.user-introduce-list .list  .time text{
+  font-size: 24rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: left;
+  color: #999999;
+}
+.user-introduce-list .list  .time text:nth-of-type(1){
+  margin-right: 25rpx;
+}
+.user-introduce-list .list .number{
+  font-size: 40rpx;
+  font-family: Arial, Arial-Bold;
+  font-weight: 700;
+  text-align: center;
+  color: #2fc0c5;
+}
+.user-introduce-list .list .week-number{
+  font-size: 24rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: center;
+  color: #999999;
+  margin-top: 6rpx;
+}
+.reminder{
+  width: 92%;
+  height: 45rpx;
+  line-height: 45rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  background: #fdf6ec;
+  border-radius: 2px;
+  font-size: 22rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: left;
+  color: #ff7548;
+  letter-spacing: -0.44px;
+  display: grid;
+  grid-template-columns: 8% 84% 8%;
+  grid-auto-rows: 10rpx;
+}
+.reminder image{
+  width: 21rpx;
+  height: 21rpx;
+  margin-right: 10rpx;
+  margin-left: 12rpx;
+  margin-top: 14rpx;
+}
+.reminder .tip-content-text{
+  display: inline-block;
+  width: 99%;
+} 
+.ttt{
+  white-space: nowrap;
+  height: 80rpx;
+}
+.placeholder-input{
+  color: #adadad !important;
+}
+
+.kefu{
+  width: 118rpx;
+  height: 118rpx;
+  position: fixed;
+  right: 34rpx;
+  bottom: 94rpx;
+  z-index: 999;
+}
+.kefu button{
+  padding: 0 !important;
+  width: 118rpx !important;
+  height: 118rpx !important;
+}
+.kefu button image{
+  width: 118rpx;
+  height: 118rpx;
+}

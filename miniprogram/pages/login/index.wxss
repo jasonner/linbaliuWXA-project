@@ -1,0 +1,120 @@
+/* pages/login/index.wxss */
+.login-header-box{
+  width: 100%;
+  position: relative;
+}
+.login-header-box image{
+  width: 100%;
+  height: 639.5rpx;
+  object-fit: fill;
+}
+.user-bg-box{
+  width: 473rpx;
+  height: 336rpx;
+  position: absolute;
+  left: 69rpx;
+  top: 213rpx;
+  z-index: 99;
+}
+.user-bg-box image{
+  width: 473rpx;
+  height: 336rpx;
+}
+.content-bg-box{
+  position: absolute;
+  top: 514rpx;
+  left: 67rpx;
+  width: 613rpx;
+  height: 831rpx;
+  opacity: 0.6;
+  background: #e0e0e0;
+  border-radius: 50rpx;
+  z-index: 9;
+}
+.content-text-box{
+  position: absolute;
+  left: 67rpx;
+  top: 536.19rpx;
+  z-index: 100;
+  width: 613rpx;
+  height: 831rpx;
+  background: #ffffff;
+  border-radius: 50rpx;
+  box-shadow: -4rpx 0px 21.84rpx 0.36rpx rgba(80,205,209,0.24); 
+  padding-top: 56rpx;
+  box-sizing: border-box;
+}
+.content-text-box .list{
+  width: 613rpx;
+  margin: 0 auto;
+  padding: 0 80rpx;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 65rpx 380rpx;
+  margin-top: 78rpx;
+}
+.content-text-box .list image{
+  width: 61rpx;
+  height: 65rpx;
+  margin-right: 16rpx;
+}
+.content-text-box .list input{
+  width: 368rpx;
+  height: 66rpx;border: 1px solid #72d6d7;
+  text-align: center;
+  color: #333;
+  margin-left: 16rpx;
+  border-radius: 27rpx;
+  font-size: 30rpx;
+}
+.content-text-box  .maplist{
+  position: relative;
+}
+.content-text-box  .maplist .sanjiao{
+  width: 35rpx;
+  height: 29rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 109rpx;
+}
+.content-text-box .list .placeholder-input {
+  color: #d4f1f2;
+  font-size: 30rpx;
+  letter-spacing: 40rpx;
+}
+.login-btn-box{
+  width: 378rpx;
+  height: 105rpx;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 152rpx;
+}
+.login-btn-box image{
+  width: 378rpx;
+  height: 105rpx;
+}
+.login-btn-box button, .login-btn-box button[disabled]:not([type]){
+  position: absolute;
+  left: 10rpx;
+  top: 5rpx;
+  font-size: 36rpx;
+  width: 378rpx;
+  font-family: Adobe Heiti Std, Adobe Heiti Std-R;
+  font-weight: R;
+  text-align:center;
+  color: #30c1c5;
+  background: transparent;
+  border: none;
+}
+.logo-box{
+  position: absolute;
+  left: 262rpx;
+  top: 1425rpx;
+  width: 226rpx;
+  height: 131rpx;
+  margin-bottom: 68rpx;
+}
+.logo-box image{
+  width: 226rpx;
+  height: 131rpx;
+}

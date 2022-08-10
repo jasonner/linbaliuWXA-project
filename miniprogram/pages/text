@@ -1,0 +1,6 @@
+{
+        "iconPath": "./images/index/icon4N.png",
+        "selectedIconPath": "./images/index/icon4Y.png",
+        "pagePath": "pages/guildMenu/index",
+        "text": "使用指南"
+      },

@@ -1,0 +1,38 @@
+<!--pages/login/index.wxml-->
+<view class="login-page">
+  <!-- header -->
+  <view class="login-header-box">
+    <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/headerbg.png"></image>
+    <view class="user-bg-box">
+      <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/userBg.png"></image>
+    </view>
+    <view class="content-bg-box"></view>
+    <view class="content-text-box">
+        <view class="list">
+            <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/icon-user.png"></image>
+            <input maxlength="20" placeholder-class="placeholder-input" bindblur="getUserName" value='{{userName}}' type="text" placeholder="姓名"/>
+        </view>
+        <view class="list">
+          <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/icon-tel.png"></image>
+          <input maxlength="11" placeholder-class="placeholder-input" bindblur="getUserTel" value="{{userTel}}" type="number" placeholder="电话"/>
+        </view>
+        <!-- <view class="list maplist">
+          <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/icon-map.png"></image>
+          <input disabled="true" placeholder-class="placeholder-input" type="text" placeholder="大区"/>
+          <image class="sanjiao" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/sanjiao.png"></image>
+        </view> -->
+        <view class="login-btn-box">
+          <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/btnBg.png"></image>
+          <button open-type="getUserInfo"   bindtap="getUserProfile" disabled="{{loginDisabled}}"> 点击登录 </button>
+        </view>
+    </view>
+    <view class="logo-box">
+      <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/index/logo.png"></image>
+    </view>
+  </view>
+  <view class="kefu">
+    <button  open-type="contact" bindcontact="handleContact">
+      <image src="../../images/index/icon-kefu.png" alt="" srcset=""></image>
+    </button>
+  </view>
+</view>

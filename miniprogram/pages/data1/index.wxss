@@ -1,0 +1,316 @@
+/* pages/data1/index.wxss */
+/* pages/msgListDetail/index.wxss */
+/* pages/addDetail/index.wxss */
+.addDetail-Page{
+  width: 100%;
+  min-height: 100%;
+  background: #fff;
+}
+.header-box{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: relative;
+}
+.header-box image{
+  width: 100%;
+  height: 286rpx;
+}
+.header-title{
+  position: absolute;
+  top: 100rpx;
+  left: 23rpx;
+  font-size: 36rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: SC-Bold;
+  text-align: left;
+  color: #ffffff;
+}
+.header-title image{
+  width: 18rpx;
+  height: 30rpx;
+  margin-right: 30rpx;
+  z-index: 9;
+}
+.header-number{
+  width: 702rpx;
+  height: 90rpx;
+  margin: 0 auto;
+  background: #f4ffff;
+  position: absolute;
+  left: 24rpx;
+  top: 180rpx;
+  border-radius: 10rpx 10rpx 0rpx 0rpx; 
+  font-size: 32rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: 700;
+  text-align: left;
+  color: #333333;
+  letter-spacing: -0.64px;
+  padding-left: 31rpx;
+  padding-top: 15rpx;
+  box-sizing: border-box;
+}
+
+/*content-box*/
+.content-box{
+  background: #fff;
+  width: 100%;
+  line-height:74.5rpx;
+  position:absolute;
+  left: 0;
+  top: 250rpx;
+}
+.content-name-date{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background: #fff;
+}
+.content-name-date view{
+  font-size: 26rpx;
+  font-family: PingFang, PingFang-SC-Regular;
+  font-weight: SC-Regular;
+  text-align: left;
+  padding-left: 56rpx;
+  box-sizing: border-box;
+  color: #666666;
+  letter-spacing: -0.52px;
+}
+
+.content-info-user-name{
+  width: 100%;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 250rpx 500rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+.Immunohistochemical-results{
+  width: 100%;
+  overflow-x: scroll;
+}
+.mmunohistochemical-results-title{
+  font-size: 28rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  color: #333333;
+  text-align: left;
+  padding-left: 56rpx;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */  
+}
+.Immunohistochemical-results .list-box{
+  width: 180%;
+}
+.Immunohistochemical-results .list-box .list{
+  width:172rpx;
+  float: left;
+  margin-left: 60rpx;
+}
+.Immunohistochemical-results .list-box .list image{
+  width: 100%;
+  height: 204rpx;
+}
+.content-info-user-name:nth-last-child(1){
+  margin-bottom: 180rpx;
+}
+.content-info-user-name .left{
+  font-size: 28rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: left;
+  padding-left: 60rpx;
+  box-sizing: border-box;
+  color: #333333;
+}
+.content-info-user-name .left text{
+  font-size: 28rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  color: #333333;
+}
+.content-info-user-name .left .user-name,.content-user-sex .left .user-name{
+  letter-spacing:27rpx
+}
+.content-info-user-name .right input{
+  width: 420rpx;
+  height: 66rpx;
+  border: 0.1vw solid #eeeeee;
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  color: #333;
+  padding-left: 24rpx;
+}
+.content-user-sex{
+  width: 100%;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 250rpx 500rpx;
+}
+.content-user-sex .left{
+  font-size: 28rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: left;
+  color: #333333;
+  letter-spacing: -0.56px;
+  padding-left: 60rpx;
+  box-sizing: border-box;
+}
+.content-user-sex .right{
+  font-size: 28rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: left;
+  color: #333333;
+  letter-spacing: -0.56px;
+}
+.content-user-sex .right .radio{
+  width: 20rpx;
+  height: 20rpx; 
+  display: block;  
+  float: left;
+  margin-top: 25rpx;
+  margin-right: 25rpx;
+  border-radius: 100%;
+  border: 5rpx solid #999999;
+}
+.content-user-sex .right .active{
+  border: 5rpx solid #2FC0C5;
+  background: #2FC0C5;
+  position: relative;
+}
+.content-user-sex .right .active::after{
+  content: '';
+  width: 12rpx;
+  height: 12rpx; 
+  border:5rpx solid #fff;
+  position: absolute;
+  left: 0.1vw;
+  top: 0.1vw;
+  border-radius: 100%;
+}
+.content-user-sex .right text:nth-of-type(2){
+  margin-right: 105rpx;
+}
+.content-user-sex .right text{
+  float: left;
+}
+.content-info-user-name .right{
+  position: relative;
+}
+.content-info-user-name .right .picker image{
+  width: 23rpx;
+  height: 13rpx;
+  position: absolute;
+  right:73rpx;
+  top:30rpx;
+}
+/* Information-report-box */
+.Information-report-box{  
+  width: 100%;
+  background: #fff;
+  margin-top: 81rpx;
+  margin-bottom: 20rpx;
+}
+.Information-report-box .pie-title{
+  padding-right:30rpx;
+  padding-left: 60rpx;
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.Information-report-box .pie-title .right{
+  text-align: right;
+  padding-right: 40rpx;
+  box-sizing: border-box;
+}
+.Information-report-box .Information-report-up{
+  width: 23rpx;
+  height: 13rpx;
+  margin-bottom: 15rpx;
+}
+.ranking-select-icon{
+  width: 6rpx;
+  height: 30rpx;
+  background: #2fc0c5;
+  display: inline-block;
+  margin-right: 11rpx;
+}
+.ranking-select-title{
+  font-size: 32rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: 600;
+  text-align: left;
+  color: #333333;
+  letter-spacing: -0.64px;
+}
+
+/* select-result-box */
+.select-result-box{
+  width: 100%;
+  background: #fff;
+  margin-bottom: 80rpx;
+}
+.select-result-box .list{
+  width: 100%;
+  margin-top: 20rpx;
+  display: flex;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.select-result-box .list .item{
+  flex: 1;
+  text-align: center;
+  background: #f6f6f6;
+  border-radius: 6px;
+  margin: 20rpx;
+}
+.select-result-box .result-key{
+  font-size: 28rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: left;
+  color: #333333;
+  letter-spacing: -0.56px;
+  margin-right: 36rpx;
+}
+.select-result-box .result-text{
+  font-size: 28rpx;
+  font-family: PingFang, PingFang-SC-Medium;
+  font-weight: SC-Medium;
+  text-align: left;
+  color: #2fc0c5;
+  letter-spacing: -0.56px;
+}
+.select-result-box .list .item .yangxing{
+  color: #ff8080;
+}
+.header-box .tempFilePath-img{
+  width: 445rpx;
+  height: 268rpx;
+  float: left;
+}
+
+.Treatment-plan-before-examination{
+  width: 100%;
+}
+.Treatment-plan-before-examination textarea{
+  width: 647rpx;
+  height: 169rpx;
+  border-radius: 6rpx;
+  border-color: #EEEEEE;
+  padding-top:20rpx;
+  padding-left: 20rpx;
+  margin: 0 auto;
+  border: 1pt solid #eeeeee;
+  font-size:26rpx;
+  font-family: PingFang, PingFang-SC-Regular;
+  font-weight: normal;
+}

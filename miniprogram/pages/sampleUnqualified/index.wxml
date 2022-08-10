@@ -1,0 +1,20 @@
+<!--pages/sampleUnqualified/INDEX.wxml-->
+<view class="guideList-page">
+  <view class="guide-header-box">
+    <view class="header-title">
+      <navigator open-type="navigateBack" delta='0'>
+        <image bindtap="gobackChange" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/back.png"></image>
+        <text bindtap="gobackChange">二次检测流程</text>
+      </navigator>
+    </view>
+    <image class="header-bg" mode="widthFix" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/sampleUnqualified/top-bg.png"></image>
+  </view>
+  <view class="contentext1">
+    <view class="list" bindtap="lookVideoChange">
+      <image mode="widthFix" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/sampleUnqualified/content-text2.png"></image>
+    </view>
+    <view class="list" bindtap="textChange">
+      <image mode="widthFix" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/sampleUnqualified/content-text1.png"></image>
+    </view>
+  </view>
+</view>

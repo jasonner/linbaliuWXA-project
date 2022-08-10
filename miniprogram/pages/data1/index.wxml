@@ -1,0 +1,606 @@
+<!--pages/data1/index.wxml-->
+<!--pages/msgListDetail/index.wxml-->
+<view class="addDetail-Page">
+    <view class="header-box">
+        <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/headerbg.png"></image>
+        <view class="header-title" bindtap="goback">
+            <image  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/back.png"></image>
+            <text>记录详情</text>
+        </view>
+        <view class="header-number">
+          送检编码：{{recordList.detectcode}}
+        </view>
+        <!-- 睿昂 -->
+        <view class="content-box" wx:if="{{organization != '1'}}">
+            <view class="content-name-date">
+                <view class="left"> 
+                    填报人：{{recordList.username}}
+                </view>
+                <view class="right">
+                    填表日期  ：{{recordList.write}}
+                </view>
+            </view>
+            <view class="content-name-date">
+                <view class="left"> 
+                  送检医生：{{recordList.doctor}}
+                </view>
+                <view class="right">
+                  <text style="letter-spacing: 15rpx;">科  室</text>：{{recordList.keshi}}
+                </view>
+            </view>
+            <!-- 姓    名 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text class="user-name">姓    名</text>
+                </view>
+                <view class="right">
+                    <input disabled="true" value="{{recordList.patient}}" placeholder-class="placeholder-input" maxlength="15" type="text" placeholder="请输入您的姓名"/>
+                </view>
+            </view>
+            
+            <!-- 性    别 -->
+            <view class="content-user-sex">
+                <view class="left">
+                    <text class="user-name">性    别</text>
+                </view>
+                <view class="right">
+                    <text data-index="1" class="radio {{recordList.sex=='男'?'active':''}}"></text><text>男</text>
+                    <text data-index="2" class="radio {{recordList.sex=='女'?'active':''}}"></text><text>女</text>
+                </view>
+             </view>   
+
+             <!-- 年    龄 -->
+             <view class="content-info-user-name">
+                <view class="left">
+                    <text class="user-name">年    龄</text>
+                </view>
+                <view class="right">
+                    <input disabled="true" value="{{recordList.age}}" placeholder-class="placeholder-input" maxlength="3" type="number" placeholder="请输入您的年龄"/>
+                </view>
+            </view>
+            <!-- 送检单位 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>送检单位</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="Bcl2SelectChange" disabled="true" value="{{DepartmentSelectIndex}}" range="{{DepartmentSelect}}">
+                            <view class="picker">
+                                <input disabled="true" class="select-input" type="text" value=" {{recordList.unit}}"/>
+                                <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>    
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            
+            <!-- 物流公司 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>物流公司</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <view class="picker">
+                            <input class="select-input" disabled="true" type="text" value=" {{recordList.ems}}"/>
+                            <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <!--物流单号 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>物流单号</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"   confirm-type="go" type="nickname" value="{{recordList.ems_code}}"  placeholder-class="placeholder-input" placeholder="请输入物流单号" />
+                </view>
+            </view>
+
+            <!-- 寄件日期 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>寄件日期</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.ems_date}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+
+            <!-- 样本返回 -->
+            <view class="content-info-user-name">
+              <view class="left">
+                <text>样本返回</text>
+              </view>
+              <view class="right">
+                <switch style="float: right;margin-right: 40rpx;" disabled='true' color="#2FC0C5" checked="{{recordList.sample_need_return}}" />
+              </view>
+            </view>
+
+            <!-- 收件人 -->
+            <view class="content-info-user-name" wx:if="{{recordList.sample_need_return}}">
+                <view class="left">
+                    <text>收件人</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.sample_return_name}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+
+            <!-- 收件地址 -->
+            <view class="content-info-user-name" wx:if="{{recordList.sample_need_return}}">
+                <view class="left">
+                    <text>收件地址</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.sample_return_addressee}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+
+
+            <!-- 联系方式 -->
+            <view class="content-info-user-name" wx:if="{{recordList.sample_need_return}}">
+                <view class="left">
+                    <text>联系方式</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.sample_return_phone}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+
+            <!--知情同意书  -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>知情同意书</text>
+                </view>
+                <view class="right" bindtap="lookImg" data-img="{{recordList.agree_img}}">
+                    <view class="section">
+                        <image  class="tempFilePath-img" src="{{recordList.agree_img}}"></image>
+                        <!-- <button class="upLoad" bindtap="imgUploadChange">+上传</button>   -->
+                    </view>
+                </view>
+            </view>
+
+            <!-- 临床/病理诊断 -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>临床/病理诊断</text>
+                </view>
+                <view class="right">
+                    <input style="width:370rpx;" disabled="true" value="{{recordList.zhenduan}}"  type="text" />
+                </view>
+            </view>
+
+            <!-- 原发部位 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>原发部位</text>
+                </view>
+                <view class="right  number-text">
+                    <input  disabled="true" value="{{recordList.part}}"  placeholder-class="placeholder-input" maxlength="15" type="text" placeholder="请输入原发部位"/>
+                </view>
+            </view>
+
+            <!-- 病  程 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text class="user-name">病  程</text>
+                </view>
+                <view class="right">
+                    <input   disabled="true" value="{{recordList.sick}}" placeholder-class="placeholder-input" maxlength="15" type="text" placeholder="请输入病程"/>
+                </view>
+            </view>
+            
+            <!--AnnArbor(分期) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>AnnArbor(分期)</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="Bcl2SelectChange" disabled="true" value="{{AnnArborSelectIndex}}" range="{{AnnArborSelect}}">
+                            <view class="picker">
+                                <input disabled="true" style="width:370rpx;" class="select-input" type="text" value="{{recordList.ann}}"/>
+                                <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>    
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 疾病分期 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>疾病分期</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="Bcl2SelectChange" disabled="true" value="{{DiseaseStageIndex}}" range="{{DiseaseStageSelect}}">
+                            <view class="picker">
+                                <input disabled="true" class="select-input" type="text" value="{{recordList.disease}}"/>
+                                <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>    
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 结外浸润 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>结外浸润</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="Bcl2SelectChange" disabled="true" value="{{InfiltrationIndex}}" range="{{InfiltrationSelect}}">
+                            <view class="picker">
+                                <input disabled="true" class="select-input" type="text" value="{{recordList.qinrun}}"/>
+                                <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>    
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            
+            <!-- ECOG(体能状态) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>ECOG(体能状态)</text>
+                </view>
+                <view class="right">
+                    <input maxlength="15" disabled="true" value="{{recordList.ecog}}" placeholder-class="placeholder-input" style="width:350rpx;margin-left:20rpx"  type="text" placeholder="请输入您的ECOG"/>
+                </view>
+            </view>
+
+            <!-- LDH(乳酸脱氢酶) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>LDH(乳酸脱氢酶)</text>
+                </view>
+                <view class="right">
+                    <input maxlength="15" disabled="true" value="{{recordList.ldh}}" placeholder-class="placeholder-input" style="width:350rpx;margin-left:20rpx"  type="text" placeholder="请输入您的LDH"/>
+                </view>
+            </view>
+
+            <!-- LDH(数值) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>LDH表达(数值)</text>
+                </view>
+                <view class="right">
+                    <input maxlength="15" disabled="true" value="{{recordList.ldh_exp}}" placeholder-class="placeholder-input" style="width:350rpx;margin-left:20rpx"  type="text" placeholder="请输入您的LDH"/>
+                </view>
+            </view>
+            
+            <!-- MYC表达 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>MYC表达</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="MycPickerChange" disabled="true" value="{{MycSelelctIndex}}" range="{{MycSelelct}}">
+                            <view class="picker">
+                               <input disabled="true" class="select-input" type="text" value=" {{recordList.myc}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <!-- MYC表达(级联子) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>MYC表达(数值)</text>
+                </view>
+                <view class="right">
+                    <input placeholder-class="placeholder-input" disabled="true" value="{{recordList.myc_exp}}" style="width:370rpx;" placeholder="请输入级联子" class="select-input" type="text"/>
+                </view>
+            </view>
+            
+            <!-- BCL2表达 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>BCL2表达</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="Bcl2SelectChange" disabled="true" value="{{Bcl2SelectIndex}}" range="{{Bcl2Select}}">
+                            <view class="picker">
+                               <input disabled="true"  class="select-input" type="text" value=" {{recordList.bcl2}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <!-- BCL2表达(级联子) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>BCL2表达(数值)</text>
+                </view>
+                <view class="right">
+                    <input placeholder-class="placeholder-input" disabled="true"  value="{{recordList.bcl2_exp}}" style="width:370rpx;" class="select-input" type="text" placeholder="请输入CL2表达"/>
+                </view>
+            </view>
+
+            <!-- 送检样本类型 -->
+            <view class="content-info-user-name" style="grid-template-columns: 35% 65%;">
+                <view class="left">
+                    <text>送检样本类型</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="SampleSelectChange" disabled="true" value="{{SampleSelectIndex}}" range="{{SampleSelect}}">
+                            <view class="picker">
+                               <input disabled="true" style="width:410rpx;" class="select-input" type="text" value="{{recordList.sample}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            
+            <!-- 疾病亚型 -->
+            <view class="content-info-user-name" style="grid-template-columns: 35% 65%;">
+                <view class="left">
+                    <text>疾病亚型</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="SampleSelectChange" disabled="true" value="{{SampleSelectIndex}}" range="{{SampleSelect}}">
+                            <view class="picker">
+                               <input disabled="true" style="width:410rpx;" class="select-input" type="text" value="{{recordList.diseaseSubtype}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 金橡 -->
+        <view class="content-box" wx:if="{{organization == '1'}}">
+          <view class="content-name-date">
+              <view class="left"> 
+                  填报人：{{recordList.username}}
+              </view>
+              <view class="right">
+                  填表日期  ：{{recordList.submissiondate}}
+              </view>
+          </view>
+
+          <view class="content-info-user-name">
+                <view class="left">
+                    <text class="user-name">姓    名</text>
+                </view>
+                <view class="right">
+                    <input disabled="true" value="{{recordList.patient}}" placeholder-class="placeholder-input" maxlength="15" type="text" placeholder="请输入您的姓名"/>
+                </view>
+            </view>
+            
+            <!-- 性    别 -->
+            <view class="content-user-sex">
+                <view class="left">
+                    <text class="user-name">性    别</text>
+                </view>
+                <view class="right">
+                    <text data-index="1" class="radio {{recordList.sex=='男'?'active':''}}"></text><text>男</text>
+                    <text data-index="2" class="radio {{recordList.sex=='女'?'active':''}}"></text><text>女</text>
+                </view>
+             </view>   
+
+             <!-- 年    龄 -->
+            <view class="content-info-user-name">
+              <view class="left">
+                  <text class="user-name">年    龄</text>
+              </view>
+              <view class="right">
+                  <input disabled="true" value="{{recordList.age}}" placeholder-class="placeholder-input" maxlength="3" type="number" placeholder="请输入您的年龄"/>
+              </view>
+            </view>
+            <!-- 诊断结果 -->
+            <view class="content-info-user-name" style="grid-template-columns: 35% 65%;">
+                <view class="left">
+                    <text>诊断结果</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="SampleSelectChange" disabled="true" >
+                            <view class="picker">
+                               <input disabled="true" style="width:422rpx;margin-left: -12rpx;" class="select-input" type="text" value="{{recordList.zhenduan}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>   
+            <!-- 送检医院 -->
+            <view class="content-info-user-name" style="grid-template-columns: 35% 65%;">
+              <view class="left">
+                  <text>送检医院</text>
+              </view>
+              <view class="right">
+                  <view class="section">
+                      <picker bindchange="SampleSelectChange" disabled="true" >
+                          <view class="picker">
+                              <input disabled="true" style="width:422rpx;margin-left: -12rpx;" class="select-input" type="text" value="{{recordList.unit}}"/>
+                              <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                          </view>
+                      </picker>
+                  </view>
+              </view>
+            </view> 
+
+            <!-- 送检日期 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>送检日期</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.submissiondate}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+            
+            <!-- 切片部位 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>切片部位</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.slice_parts}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+
+            <!-- 切片张数 -->
+            <view class="content-info-user-name" style="grid-template-columns: 35% 65%;">
+              <view class="left">
+                  <text>切片张数</text>
+              </view>
+              <view class="right">
+                  <view class="section">
+                      <picker bindchange="SampleSelectChange" disabled="true" >
+                          <view class="picker">
+                              <input disabled="true" style="width:422rpx;margin-left: -12rpx;" class="select-input" type="text" value="{{recordList.slice_count}}"/>
+                              <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                          </view>
+                      </picker>
+                  </view>
+              </view>
+            </view> 
+
+             <!-- 取样阶段 -->
+             <view class="content-info-user-name" style="grid-template-columns: 35% 65%;">
+              <view class="left">
+                  <text>取样阶段</text>
+              </view>
+              <view class="right">
+                  <view class="section">
+                      <picker bindchange="SampleSelectChange" disabled="true" >
+                          <view class="picker">
+                              <input disabled="true" style="width:422rpx;margin-left: -12rpx;" class="select-input" type="text" value="{{recordList.quyangjieduan}}"/>
+                              <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                          </view>
+                      </picker>
+                  </view>
+              </view>
+            </view> 
+            <div class="mmunohistochemical-results-title" wx:if="{{recordList.quyangjieduan=='其他_'}}">其他取样阶段</div>
+            <view class="Treatment-plan-before-examination">
+                <textarea disabled="true" value="{{recordList.quyangjieduanqita}}" name="" id="" cols="30" rows="10"></textarea>
+            </view>
+            <!-- 免疫组化结果 -->
+            <div class="mmunohistochemical-results-title">免疫组化结果</div>
+            <view class="Immunohistochemical-results">
+              <view class="list-box">
+                <view class="list" wx:for="{{recordList.mianyizuhuajiegou}}" wx:key="{{imgSrc}}">
+                  <image bindtap="lookImg" data-img="{{item.imgSrc}}" src="{{item.imgSrc}}"></image>
+                </view>  
+              </view>
+            </view>
+
+            <!-- 送检前治疗方案 -->
+            <div class="mmunohistochemical-results-title">送检前治疗方案</div>
+            <view class="Treatment-plan-before-examination">
+                <textarea disabled="true" value="{{recordList.songjianqianzhiliaofangan}}" name="" id="" cols="30" rows="10"></textarea>
+            </view>
+
+            <!-- 报告接收邮箱 -->
+            <view class="content-info-user-name">
+              <view class="left">
+                  <text>报告接收邮箱</text>
+              </view>
+              <view class="right">
+                <input class="select-input" disabled="true"  value="{{recordList.receiveemail}}"  placeholder-class="placeholder-input" />
+              </view>
+            </view>
+            
+            <!--知情同意书  -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>知情同意书</text>
+                </view>
+                <view class="right" bindtap="lookImg" data-img="{{recordList.agree_img}}">
+                    <view class="section">
+                        <image  class="tempFilePath-img" src="{{recordList.agree_img}}"></image>
+                        <!-- <button class="upLoad" bindtap="imgUploadChange">+上传</button>   -->
+                    </view>
+                </view>
+            </view>
+
+             <!-- 物流公司 -->
+            <view class="content-info-user-name" style="grid-template-columns: 35% 65%;">
+              <view class="left">
+                  <text>物流公司</text>
+              </view>
+              <view class="right">
+                  <view class="section">
+                      <picker bindchange="SampleSelectChange" disabled="true" >
+                          <view class="picker">
+                              <input disabled="true" style="width:422rpx;margin-left: -12rpx;" class="select-input" type="text" value="{{recordList.ems}}"/>
+                              <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                          </view>
+                      </picker>
+                  </view>
+              </view>
+            </view> 
+
+            <!-- 物流单号 -->
+            <view class="content-info-user-name">
+              <view class="left">
+                  <text>物流单号</text>
+              </view>
+              <view class="right">
+                <input class="select-input" disabled="true"  value="{{recordList.ems_code}}"  placeholder-class="placeholder-input" />
+              </view>
+            </view>
+
+            <!-- 寄件日期 -->
+            <view class="content-info-user-name" >
+              <view class="left">
+                  <text>寄件日期</text>
+              </view>
+              <view class="right">
+                  <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.ems_date}}"  placeholder-class="placeholder-input"  />
+              </view>
+            </view>
+
+            <!-- 样本返回 -->
+            <view class="content-info-user-name">
+              <view class="left">
+                <text>样本返回</text>
+              </view>
+              <view class="right">
+                <switch style="float: right;margin-right: 40rpx;" disabled='true' color="#2FC0C5" checked="{{recordList.sample_need_return}}" />
+              </view>
+            </view>
+
+            <!-- 收件人 -->
+            <view class="content-info-user-name" wx:if="{{recordList.sample_need_return}}">
+                <view class="left">
+                    <text>收件人</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.sample_return_name}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+
+            <!-- 收件地址 -->
+            <view class="content-info-user-name" wx:if="{{recordList.sample_need_return}}">
+                <view class="left">
+                    <text>收件地址</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.sample_return_addressee}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+

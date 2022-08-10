@@ -1,0 +1,15 @@
+<!--pages/guildSongjianDetail/index.wxml-->
+<view class="guideList-page">
+    <view class="guide-header-box">
+      <view class="header-title">
+        <navigator 	open-type="navigateBack" delta='0'  >
+          <image  bindtap="gobackChange" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/back.png"></image>
+          <text  bindtap="gobackChange">送检流程概述</text>
+        </navigator>
+      </view>
+      <image class="header-bg" mode="widthFix"  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/songjianliucheng/top-bg.png"></image>
+    </view>
+    <view class="contentext1">
+      <image class="header-bg" mode="widthFix"  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/songjianliucheng/content.png"></image>
+    </view>
+  </view>

@@ -1,0 +1,51 @@
+/* pages/systemSelection/index.wxss */
+.guildMenu-page{
+  width: 100%;
+  min-height: 100%;
+  overflow: scroll;
+  background: #2fc0c5;
+}
+.header-title{
+  font-size: 36rpx;
+  font-family: PingFang, PingFang-SC-Bold;
+  font-weight: SC-Bold;
+  text-align: left;
+  color: #ffffff;
+  width: 100%;
+  height: 10vh;
+  padding-top: 6vh;
+  padding-left: 4vw;
+  box-sizing: border-box;
+}
+.header-title image{
+  width: 18rpx;
+  height: 30rpx;
+  margin-right: 30rpx;
+  display: inline-block;
+}
+.guide-header-box{
+  width: 100%;
+  height: auto;
+}
+.guide-header-box image{
+  width: 100%;
+  height: 100%;
+}
+.menu-content{
+  width: 702rpx;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  z-index: 100;
+  position: relative;
+  margin-top: -250rpx;
+  margin-bottom: 240rpx;
+  padding-bottom: 42rpx;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 48rpx 0;
+  padding-bottom: 128rpx;
+}
+.menu-content view image{
+  margin-top: 80rpx;
+}

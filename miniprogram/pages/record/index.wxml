@@ -1,0 +1,77 @@
+<!--miniprogram/pages/record/index.wxml-->
+<view class="record-Page">
+  <view class="header-box">
+    <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/headerbg.png"></image>
+    <view class="header-title" bindtap="goback">
+        <image  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/back.png"></image>
+        <text>提交记录</text>
+    </view>
+    <view class="user-center-box" >
+        <view class="user-introduce-list">
+          <view class="list">
+            <image src="{{userInfoList.headimg}}"></image>
+          </view>
+          <view class="list">
+            <view>
+              <text class="user-name">{{userInfoList.nickname}}</text>
+            </view>
+            <view class="time">
+              <text>第{{userInfoList.week}}周</text>
+            </view>
+          </view>
+          <view class="list"> 
+            <view class="number">{{totalAll}}</view>
+            <view class="week-number">本周提交数量</view>
+          </view>
+        </view>
+      </view>
+  </view>
+
+  <!-- tab -->
+  <view class="tab-box">
+    <view data-index="" class="list {{_num==''?'active':''}}" bindtap="tabClick">
+      <text>全部</text>
+    </view>
+    <view data-index="1" class="list  {{_num=='1'?'active':''}}" bindtap="tabClick">
+      <text>已提交</text>
+    </view>
+    <view data-index="0" class="list  {{_num=='0'?'active':''}}" bindtap="tabClick">
+      <text>草稿箱</text>
+      <icon wx:if="{{hasSubmitNum}}" class="icon-box-img" type="warn" size="18"></icon>
+    </view>
+  </view>
+
+  <!-- list -->
+  <view class="list-box">
+    <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px" class="orderList {{hasProductPay?'show':'hidden'}}" bindscrolltolower="bindDownLoad" bindscroll="scroll">
+      <view class="list" wx:for="{{recordList}}" wx:key="id" wx:if="{{recordList.length>0}}">
+        <view class="msg-title {{item.status===0?'msg-title-active':''}}" > 
+          <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/msg/icon-arrow.png"></image>
+          <text wx:if="{{item.status ===0}}">未提交</text>
+          <text wx:if="{{item.status !=0}}">已提交</text>
+        </view>
+        <view class="number-title">
+        送检单位 {{item.unit}}
+        </view>
+        <view class="number-title">
+        送检编号 {{item.detectcode}}
+        </view>
+        <view class="list-msg-content">
+          <view class="left">
+            <view>患者姓名：{{item.patient}}</view>
+            <view>填表日期：{{item.write}}</view>
+          </view>
+          <view class="right">
+            <view>
+              <button bindtap="lookDetail" data-organization="{{item.organization}}" data-index="{{item.id}}" data-status="{{item.status}}">点击查看</button>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="list no-data-img" wx:if="{{recordList.length<=0}}">
+        <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/login/node-data.png"></image>
+      </view>
+    </scroll-view>  
+  </view>
+</view>

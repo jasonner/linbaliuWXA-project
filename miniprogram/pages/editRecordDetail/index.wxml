@@ -1,0 +1,2 @@
+<!--pages/editRecordDetail/index.wxml-->
+<web-view src='{{href}}'></web-view>

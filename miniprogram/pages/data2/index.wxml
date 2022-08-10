@@ -1,0 +1,602 @@
+<!--pages/data2/index.wxml-->
+<!--pages/msgListDetail/index.wxml-->
+<view class="addDetail-Page">
+    <view class="header-box">
+        <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/headerbg.png"></image>
+        <view class="header-title" bindtap="goback">
+            <image  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/back.png"></image>
+            <text>记录详情</text>
+        </view>
+        <view class="header-number">
+          送检编码：{{recordList.detectcode}}
+        </view>
+        <view class="content-box">
+            <view class="content-name-date">
+                <view class="left"> 
+                    填报人：{{recordList.username}}
+                </view>
+                <view class="right">
+                    填表日期  ：{{recordList.write}}
+                </view>
+            </view>
+            <view class="content-name-date">
+                <view class="left"> 
+                  送检医生：{{recordList.doctor}}
+                </view>
+                <view class="right">
+                  <text style="letter-spacing: 15rpx;">科  室</text>：{{recordList.keshi}}
+                </view>
+            </view>
+            <!-- 姓    名 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text class="user-name">姓    名</text>
+                </view>
+                <view class="right">
+                    <input maxlength="15" disabled="true" value="{{recordList.patient}}" placeholder-class="placeholder-input" type="text" placeholder="请输入您的姓名"/>
+                </view>
+            </view>
+            
+            <!-- 性    别 -->
+            <view class="content-user-sex">
+                <view class="left">
+                    <text class="user-name">性    别</text>
+                </view>
+                <view class="right">
+                    <text data-index="1" class="radio {{recordList.sex=='男'?'active':''}}"></text><text>男</text>
+                    <text data-index="2" class="radio {{recordList.sex=='女'?'active':''}}"></text><text>女</text>
+                </view>
+             </view>   
+
+             <!-- 年    龄 -->
+             <view class="content-info-user-name">
+                <view class="left">
+                    <text class="user-name">年    龄</text>
+                </view>
+                <view class="right">
+                    <input disabled="true" value="{{recordList.age}}" maxlength="3" placeholder-class="placeholder-input" type="number" placeholder="请输入您的年龄"/>
+                </view>
+            </view>
+            <!-- 送检单位 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>送检单位</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker disabled="true" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                            <view class="picker">
+                               <input type="text" disabled="true" class="select-input" type="text" value=" {{recordList.unit}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            
+            <!-- 物流公司 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>物流公司</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <view class="picker">
+                            <input class="select-input" disabled="true" type="text" value=" {{recordList.ems}}"/>
+                            <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <!--物流单号 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>物流单号</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"   confirm-type="go" type="nickname" value="{{recordList.ems_code}}"  placeholder-class="placeholder-input" placeholder="请输入物流单号" />
+                </view>
+            </view>
+            
+            <!-- 寄件日期 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>寄件日期</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.ems_date}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+            
+                        <!-- 样本返回 -->
+                        <view class="content-info-user-name">
+              <view class="left">
+                <text>样本返回</text>
+              </view>
+              <view class="right">
+                <switch style="float: right;margin-right: 40rpx;" disabled='true' color="#2FC0C5" checked="{{recordList.sample_need_return}}" />
+              </view>
+            </view>
+
+            <!-- 收件人 -->
+            <view class="content-info-user-name" wx:if="{{recordList.sample_need_return}}">
+                <view class="left">
+                    <text>收件人</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.sample_return_name}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+
+            <!-- 收件地址 -->
+            <view class="content-info-user-name" wx:if="{{recordList.sample_need_return}}">
+                <view class="left">
+                    <text>收件地址</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.sample_return_addressee}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+
+            <!-- 联系方式 -->
+            <view class="content-info-user-name" wx:if="{{recordList.sample_need_return}}">
+                <view class="left">
+                    <text>联系方式</text>
+                </view>
+                <view class="right">
+                    <input class="select-input" disabled="true"  confirm-type="go" type="nickname" value="{{recordList.sample_return_phone}}"  placeholder-class="placeholder-input"  />
+                </view>
+            </view>
+
+            <!--知情同意书  -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text>知情同意书</text>
+                </view>
+                <view class="right" bindtap="lookImg" data-img="{{recordList.agree_img}}">
+                    <view class="section">
+                        <image  class="tempFilePath-img" src="{{recordList.agree_img}}"></image>
+                        <!-- <button class="upLoad" bindtap="imgUploadChange">+上传</button>   -->
+                    </view>
+                </view>
+            </view>
+
+            <!-- 临床/病理诊断 -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>临床/病理诊断</text>
+                </view>
+                <view class="right">
+                    <input style="width:370rpx;" disabled="true"  value="{{recordList.zhenduan}}"  type="text" />
+                </view>
+            </view>
+
+            <!-- 原发部位 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>原发部位</text>
+                </view>
+                <view class="right  number-text">
+                    <input placeholder-class="placeholder-input" disabled="true" value="{{recordList.part}}" maxlength="15" type="text" placeholder="请输入原发部位"/>
+                </view>
+            </view>
+
+            <!-- 病  程 -->
+            <view class="content-info-user-name">
+                <view class="left">
+                    <text class="user-name">病  程</text>
+                </view>
+                <view class="right">
+                    <input maxlength="15"  disabled="true" value="{{recordList.sick}}" placeholder-class="placeholder-input" type="text" placeholder="请输入病程"/>
+                </view>
+            </view>
+            
+            <!--AnnArbor(分期) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>AnnArbor(分期)</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="AnnArborSelectChange" disabled="true" value="{{AnnArborSelectIndex}}" range="{{AnnArborSelect}}">
+                            <view class="picker">
+                               <input disabled="true" style="width:370rpx;" class="select-input" type="text" value="{{recordList.ann}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 疾病分期 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>疾病分期</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="DiseaseStageChange" disabled="true" value="{{DiseaseStageIndex}}" range="{{DiseaseStageSelect}}">
+                            <view class="picker">
+                               <input disabled="true" class="select-input" type="text" value="{{recordList.disease}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 结外浸润 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>结外浸润</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="InfiltrationChange" disabled="true" value="{{InfiltrationIndex}}" range="{{InfiltrationSelect}}">
+                            <view class="picker">
+                               <input disabled="true" disabled="true" class="select-input" type="text" value="{{recordList.qinrun}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            
+            <!-- ECOG(体能状态) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>ECOG(体能状态)</text>
+                </view>
+                <view class="right">
+                    <input maxlength="15" disabled="true" value="{{recordList.ecog}}" placeholder-class="placeholder-input" style="width:350rpx;margin-left:20rpx"  type="text" placeholder="请输入您的ECOG"/>
+                </view>
+            </view>
+
+            <!-- LDH(乳酸脱氢酶) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>LDH(乳酸脱氢酶)</text>
+                </view>
+                <view class="right">
+                    <input maxlength="15" disabled="true" value="{{recordList.ldh}}" placeholder-class="placeholder-input" style="width:350rpx;margin-left:20rpx"  type="text" placeholder="请输入您的LDH"/>
+                </view>
+            </view>
+
+             <!-- LDH(数值) -->
+             <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>LDH表达(数值)</text>
+                </view>
+                <view class="right">
+                    <input maxlength="15" disabled="true" value="{{recordList.ldh_exp}}" placeholder-class="placeholder-input" style="width:350rpx;margin-left:20rpx"  type="text" placeholder="请输入您的LDH"/>
+                </view>
+            </view>
+
+            <!-- MYC表达 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>MYC表达</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="MycPickerChange" disabled="true" value="{{MycSelelctIndex}}" range="{{MycSelelct}}">
+                            <view class="picker">
+                               <input disabled="true" class="select-input" type="text" value=" {{recordList.myc}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <!-- MYC表达(数值) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>MYC表达(数值)</text>
+                </view>
+                <view class="right">
+                    <input style="width:370rpx;" disabled="true" placeholder-class="placeholder-input" value="{{recordList.myc_exp}}" placeholder="请输入级联子" class="select-input" type="text"/>
+                </view>
+            </view>
+            
+            <!-- BCL2表达 -->
+            <view class="content-info-user-name">
+                <view class="left number-text">
+                    <text>BCL2表达</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="Bcl2SelectChange" disabled="true" value="{{Bcl2SelectIndex}}" range="{{Bcl2Select}}">
+                            <view class="picker">
+                               <input disabled="true"  class="select-input" type="text" value=" {{recordList.bcl2}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <!-- BCL2表达(数值) -->
+            <view class="content-info-user-name" style="grid-template-columns: 40% 60%;">
+                <view class="left">
+                    <text>BCL2表达(数值)</text>
+                </view>
+                <view class="right">
+                    <input  style="width:370rpx;" value="{{recordList.bcl2_exp}}" disabled="true" placeholder-class="placeholder-input" class="select-input" type="text" placeholder="请输入CL2表达"/>
+                </view>
+            </view>
+
+            <!-- 送检样本类型 -->
+            <view class="content-info-user-name" style="grid-template-columns: 35% 65%;">
+                <view class="left">
+                    <text>送检样本类型</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                        <picker bindchange="SampleSelectChange" disabled="true" value="{{SampleSelectIndex}}" range="{{SampleSelect}}">
+                            <view class="picker">
+                               <input disabled="true" style="width:410rpx;" class="select-input" type="text" value="{{recordList.sample}}"/>
+                               <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 疾病亚型 -->
+            <view class="content-info-user-name" style="grid-template-columns: 35% 65%;">
+              <view class="left">
+                  <text>疾病亚型</text>
+              </view>
+              <view class="right">
+                  <view class="section">
+                      <view class="picker">
+                          <input disabled="true" style="width:410rpx;" class="select-input" type="text" value="{{recordList.diseaseSubtype}}"/>
+                          <image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png"></image>
+                      </view>
+                  </view>
+              </view>
+            </view>
+
+            <!-- 信息报告 -->
+            <view class="Information-report-box" bindtap="reportShowChange">
+              <view class="pie-title">
+                <view class="left">
+                  <text class="ranking-select-icon"></text><text class="ranking-select-title">信息报告</text>
+                </view>
+                <view class="right">
+                  <image class="Information-report-up" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/upselect.png" wx:if="{{resultShow}}"></image>
+                  <image class="Information-report-up" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/select.png" wx:if="{{!resultShow}}"></image>
+                </view>
+              </view>
+            </view>
+            <!-- 分子分型结果 -->
+            <view class="content-info-user-name" style="grid-template-columns: 35% 65%;" wx:if="{{resultShow}}">
+                <view class="left">
+                    <text>分子分型结果</text>
+                </view>
+                <view class="right">
+                    <view class="section">
+                      <view class="picker">
+                        <input disabled="true" style="width:410rpx;" class="select-input" type="text" value=" {{detectionList.result}}"/>
+                      </view>
+                    </view>
+                </view>
+            </view>
+            
+            <!-- 选择结果 -->
+            <view class="select-result-box" wx:if="{{resultShow}}">
+            <!-- lsit1 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">BCL2</text>
+                  <text wx:if="{{detectionList.BCL2 == '阳性'}}" class="result-text yangxing">{{detectionList.BCL2}}</text>
+                  <text wx:else="{{detectionList.BCL2 == '阴性'}}"  class="result-text">{{detectionList.BCL2}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">BCL6</text>
+                  <text wx:if="{{detectionList.BCL6 == '阳性'}}" class="result-text yangxing">{{detectionList.BCL6}}</text>
+                  <text wx:else="{{detectionList.BCL6 == '阴性'}}" class="result-text">{{detectionList.BCL6}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">MYC</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.MYC == '阳性'}}">{{detectionList.MYC}}</text>
+                  <text class="result-text" wx:if="{{detectionList.MYC =='阴性'}}">{{detectionList.MYC}}</text>
+                </view>
+              </view> -->
+              <!-- lsit2 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">TNFRSF14</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.TNFRSF14 == '阳性'}}">{{detectionList.TNFRSF14}}</text>
+                  <text class="result-text" wx:if="{{detectionList.TNFRSF14 =='阴性'}}">{{detectionList.TNFRSF14}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">CCND3</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.CCND3 == '阳性'}}">{{detectionList.CCND3}}</text>
+                  <text class="result-text" wx:if="{{detectionList.CCND3 =='阴性'}}">{{detectionList.CCND3}}</text>
+                </view>
+              </view> -->
+
+              <!-- list3 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">BTG1</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.BTG1 == '阳性'}}">{{detectionList.BTG1}}</text>
+                  <text class="result-text" wx:if="{{detectionList.BTG1 =='阴性'}}">{{detectionList.BTG1}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">KMT2D</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.KMT2D == '阳性'}}">{{detectionList.KMT2D}}</text>
+                  <text class="result-text" wx:if="{{detectionList.KMT2D =='阴性'}}">{{detectionList.KMT2D}}</text>
+                </view>
+              </view> -->
+
+              <!-- list4 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">EZH2</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.EZH2 == '阳性'}}">{{detectionList.EZH2}}</text>
+                  <text class="result-text" wx:if="{{detectionList.EZH2 =='阴性'}}">{{detectionList.EZH2}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">STAT6</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.STAT6 == '阳性'}}">{{detectionList.STAT6}}</text>
+                  <text class="result-text" wx:if="{{detectionList.STAT6 =='阴性'}}">{{detectionList.STAT6}}</text>
+                </view>
+              </view> -->
+
+              <!-- list5 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">NOTCH1</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.NOTCH1 == '阳性'}}">{{detectionList.NOTCH1}}</text>
+                  <text class="result-text" wx:if="{{detectionList.NOTCH1 =='阴性'}}">{{detectionList.NOTCH1}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">CD70</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.CD70 == '阳性'}}">{{detectionList.CD70}}</text>
+                  <text class="result-text" wx:if="{{detectionList.CD70 =='阴性'}}">{{detectionList.CD70}}</text>
+                </view>
+              </view> -->
+
+              <!-- list6 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">TP53</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.TP53 == '阳性'}}">{{detectionList.TP53}}</text>
+                  <text class="result-text" wx:if="{{detectionList.TP53 =='阴性'}}">{{detectionList.TP53}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">FOXO1</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.FOXO1 == '阳性'}}">{{detectionList.FOXO1}}</text>
+                  <text class="result-text" wx:if="{{detectionList.FOXO1 =='阴性'}}">{{detectionList.FOXO1}}</text>
+                </view>
+              </view> -->
+
+              <!-- list7 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">CD58</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.CD58 == '阳性'}}">{{detectionList.CD58}}</text>
+                  <text class="result-text" wx:if="{{detectionList.CD58 =='阴性'}}">{{detectionList.CD58}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">NOTCH2</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.NOTCH2 == '阳性'}}">{{detectionList.NOTCH2}}</text>
+                  <text class="result-text" wx:if="{{detectionList.NOTCH2 =='阴性'}}">{{detectionList.NOTCH2}}</text>
+                </view>
+              </view> -->
+
+              <!-- list8 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">MPEG1</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.MPEG1 == '阳性'}}">{{detectionList.MPEG1}}</text>
+                  <text class="result-text" wx:if="{{detectionList.MPEG1 =='阴性'}}">{{detectionList.MPEG1}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">CXCR4</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.CXCR4 == '阳性'}}">{{detectionList.CXCR4}}</text>
+                  <text class="result-text" wx:if="{{detectionList.CXCR4 =='阴性'}}">{{detectionList.CXCR4}}</text>
+                </view>
+              </view> -->
+
+              <!-- list9 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">TBL1XR1</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.TBL1XR1 == '阳性'}}">{{detectionList.TBL1XR1}}</text>
+                  <text class="result-text" wx:if="{{detectionList.TBL1XR1 =='阴性'}}">{{detectionList.TBL1XR1}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">DTX1</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.DTX1 == '阳性'}}">{{detectionList.DTX1}}</text>
+                  <text class="result-text" wx:if="{{detectionList.DTX1 =='阴性'}}">{{detectionList.DTX1}}</text>
+                </view>
+              </view> -->
+
+              <!-- list10 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">CD79B</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.CD79B == '阳性'}}">{{detectionList.CD79B}}</text>
+                  <text class="result-text" wx:if="{{detectionList.CD79B =='阴性'}}">{{detectionList.CD79B}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">MTOR</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.MTOR == '阳性'}}">{{detectionList.MTOR}}</text>
+                  <text class="result-text" wx:if="{{detectionList.MTOR =='阴性'}}">{{detectionList.MTOR}}</text>
+                </view>
+              </view> -->
+
+              <!-- list11 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">HIST1H1E</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.HIST1H1E == '阳性'}}">{{detectionList.HIST1H1E}}</text>
+                  <text class="result-text" wx:if="{{detectionList.HIST1H1E =='阴性'}}">{{detectionList.HIST1H1E}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">TNFAIP3</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.TNFAIP3 == '阳性'}}">{{detectionList.TNFAIP3}}</text>
+                  <text class="result-text" wx:if="{{detectionList.TNFAIP3 =='阴性'}}">{{detectionList.TNFAIP3}}</text>
+                </view>
+              </view> -->
+
+              <!-- list12 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">PIMI</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.PIMI == '阳性'}}">{{detectionList.PIMI}}</text>
+                  <text class="result-text" wx:if="{{detectionList.PIMI =='阴性'}}">{{detectionList.PIMI}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">CREBBP</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.CREBBP == '阳性'}}">{{detectionList.CREBBP}}</text>
+                  <text class="result-text" wx:if="{{detectionList.CREBBP =='阴性'}}">{{detectionList.CREBBP}}</text>
+                </view>
+              </view> -->
+
+              <!-- list13 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">CARD11</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.CARD11 == '阳性'}}">{{detectionList.CARD11}}</text>
+                  <text class="result-text" wx:if="{{detectionList.CARD11 =='阴性'}}">{{detectionList.CARD11}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">EP300</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.EP300 == '阳性'}}">{{detectionList.EP300}}</text>
+                  <text class="result-text" wx:if="{{detectionList.EP300 =='阴性'}}">{{detectionList.EP300}}</text>
+                </view>
+              </view> -->
+
+              <!-- list14 -->
+              <!-- <view class="list">
+                <view class="item">
+                  <text class="result-key">KMT2C</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.KMT2C == '阳性'}}">{{detectionList.KMT2C}}</text>
+                  <text class="result-text" wx:if="{{detectionList.KMT2C =='阴性'}}">{{detectionList.KMT2C}}</text>
+                </view>
+                <view class="item">
+                  <text class="result-key">KMT2D</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.KMT2D == '阳性'}}">{{detectionList.KMT2D}}</text>
+                  <text class="result-text" wx:if="{{detectionList.KMT2D =='阴性'}}">{{detectionList.KMT2D}}</text>
+                </view>
+              </view> -->
+
+              <!-- list15 -->
+              <!-- <view class="list" style="width: 54%;">
+                <view class="item" >
+                  <text class="result-key">SGK1</text>
+                  <text class="result-text yangxing" wx:if="{{detectionList.SGK1 == '阳性'}}">{{detectionList.SGK1}}</text>
+                  <text class="result-text" wx:if="{{detectionList.SGK1 =='阴性'}}">{{detectionList.SGK1}}</text>
+                </view>
+              </view> -->
+            </view>
+        </view>
+    </view>
+</view>
+

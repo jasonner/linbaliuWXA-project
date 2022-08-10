@@ -1,0 +1,22 @@
+<!--pages/guide/index.wxml-->
+  <view class="guideList-page">
+    <view class="guide-header-box">
+      <view class="header-title">
+        <navigator 	open-type="navigateBack" delta='0'  >
+          <image  bindtap="gobackChange" src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/addDetail/back.png"></image>
+          <text  bindtap="gobackChange">使用指南</text>
+        </navigator>
+      </view>
+      <image class="header-bg" mode="widthFix"  src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/UseGuide/top-bg.png"></image>
+    </view>
+    <view class="contentext1">
+      <view class="list-box">
+        <view class="list" wx:for="{{listArr}}" wx:key="{{index}}" data-index="{{index+1}}" bindtap="lookDetail">
+          <view><image src="{{item.iconSrc}}"></image></view>
+          <view>{{item.text1}} <view>{{item.text2}}</view></view>
+          <view wx:if="{{index===3}}" style="margin-top: 3.6vh;"><image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/guildSongjian/arr-right.png"></image></view>
+          <view wx:else style="margin-top: 20rpx;"><image src="https://forhoooss.wfbweb.com/2022/wj/linbaliu0609/guildSongjian/arr-right.png"></image></view>
+        </view>
+      </view>
+    </view>
+  </view>
